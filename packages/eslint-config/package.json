@@ -1,0 +1,20 @@
+{
+  "name": "@monorepo-mf-timer/eslint-config",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./base": "./base.js",
+    "./react": "./react.js",
+    "./vue": "./vue.js"
+  },
+  "peerDependencies": {
+    "@eslint/js": "catalog:",
+    "eslint": "catalog:",
+    "eslint-config-prettier": "catalog:",
+    "eslint-plugin-react": "catalog:",
+    "eslint-plugin-react-hooks": "catalog:",
+    "eslint-plugin-vue": "catalog:",
+    "typescript-eslint": "catalog:"
+  }
+}
