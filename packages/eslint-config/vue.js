@@ -1,22 +1,15 @@
 import pluginVue from 'eslint-plugin-vue';
-import tseslint from 'typescript-eslint';
 
 export default [
   // Vue 檔案配置
   ...pluginVue.configs['flat/recommended'],
 
-  // Vue 專案的 JS/TS 檔案配置
+  // Vue 專案的 TS/JS 檔案配置（composables, utils 等）
   {
-    files: ['**/*.{js,ts}'],
-    plugins: {
-      vue: pluginVue
-    },
-    languageOptions: {
-      parser: tseslint.parser,
-      parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module'
-      }
+    files: ['**/*.ts', '**/*.js'],
+    ignores: ['**/*.d.ts'], // 排除型別聲明檔案
+    rules: {
+      // Vue 專案通用 TS / JS 規則（必要時再加）
     }
   }
 ];

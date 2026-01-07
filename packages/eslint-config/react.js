@@ -3,7 +3,6 @@ import pluginReactHooks from 'eslint-plugin-react-hooks';
 
 export default [
   {
-    files: ['**/*.{ts,tsx}'],
     plugins: {
       react: pluginReact,
       'react-hooks': pluginReactHooks

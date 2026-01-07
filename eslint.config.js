@@ -2,21 +2,28 @@ import baseConfig from './packages/eslint-config/base.js';
 import reactConfig from './packages/eslint-config/react.js';
 import vueConfig from './packages/eslint-config/vue.js';
 
-export default [
-  ...baseConfig,
+/**
+ * 為配置陣列套用特定的檔案路徑
+ * @param {Array} configs - ESLint 配置陣列
+ * @param {Array<string>} patterns - 檔案匹配模式
+ */
+const scope = (configs, patterns) =>
+  configs.map((config) => ({
+    ...config,
+    files: patterns
+  }));
 
-  // React 專案 (host-react, remote-react)
+export default [
+  // 全局忽略型別聲明檔案
   {
-    files: ['apps/host-react/**/*.{ts,tsx}', 'apps/remote-react/**/*.{ts,tsx}'],
-    ...reactConfig[0]
+    ignores: ['**/*.d.ts']
   },
 
-  // Vue 專案 (remote-vue)
-  ...vueConfig.map((config) => ({
-    ...config,
-    files: config.files?.map((pattern) => pattern.replace('**/', 'apps/remote-vue/**/')) || [
-      'apps/remote-vue/**/*.vue',
-      'apps/remote-vue/**/*.{js,ts}'
-    ]
-  }))
+  ...baseConfig,
+
+  // React apps
+  ...scope(reactConfig, ['apps/host-react/**/*.{ts,tsx}', 'apps/remote-react/**/*.{ts,tsx}']),
+
+  // Vue app
+  ...scope(vueConfig, ['apps/remote-vue/**/*.vue', 'apps/remote-vue/**/*.{ts,js}'])
 ];

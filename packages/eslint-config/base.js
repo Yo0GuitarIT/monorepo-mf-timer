@@ -47,5 +47,7 @@ export default [
   })),
 
   // Prettier 整合（必須放最後）
-  eslintConfigPrettier
+  {
+    ...eslintConfigPrettier
+  }
 ];
