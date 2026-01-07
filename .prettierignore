@@ -1,0 +1,17 @@
+node_modules
+dist
+build
+.rsbuild
+pnpm-lock.yaml
+
+# 系統檔案
+.DS_Store
+*.log
+
+# Rsbuild 效能分析檔案
+.rspack-profile-*
+
+# 暫存檔案
+*.local
+.cache
+.temp
