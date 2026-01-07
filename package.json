@@ -7,15 +7,28 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "update-catalog": "node scripts/update-catalog.js",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "fix": "pnpm run format && pnpm run lint:fix"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.27.0",
   "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "@typescript-eslint/eslint-plugin": "^8.52.0",
+    "@typescript-eslint/parser": "^8.52.0",
+    "eslint": "catalog:",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-vue": "^10.6.2",
     "npm-check-updates": "^17.1.11",
     "prettier": "catalog:",
+    "typescript-eslint": "^8.52.0",
+    "vue-eslint-parser": "^10.2.0",
     "yaml": "^2.6.1"
   }
 }
