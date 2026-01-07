@@ -1,18 +1,19 @@
 import './App.css';
 
-const item: string[] = ['a', 'b', 'c'];
-
 const App = () => {
   return (
     <div className="content">
-      <h1>Rsbuild with React</h1>
-      <p>Start building amazing things with Rsbuild.</p>
-
-      <ul>
-        {item.map((it) => (
-          <li key={it}>{it}</li>
-        ))}
-      </ul>
+      <div style={{ padding: 24 }}>
+        <h1>host App</h1>
+        <iframe
+          src="http://localhost:3001"
+          style={{
+            width: '100%',
+            height: 300,
+            border: '1px solid #ccc'
+          }}
+        />
+      </div>
     </div>
   );
 };
