@@ -7,7 +7,7 @@ import { isNil } from 'lodash';
  * @param delay 延遲時間（毫秒）
  * @return void
  */
-const useInterval = (callback: () => void, delay: number) => {
+const useInterval = (callback: () => void, delay: number | null) => {
   const savedCallback = useRef<(() => void) | null>(null);
 
   useEffect(() => {
@@ -28,11 +28,28 @@ const useInterval = (callback: () => void, delay: number) => {
  */
 const Timer = () => {
   const [count, setCount] = useState(0);
+  const [isRunning, setIsRunning] = useState(false);
 
-  useInterval(() => {
-    setCount(count + 1);
-  }, 1000);
+  useInterval(
+    () => {
+      setCount(count + 1);
+    },
+    isRunning ? 1000 : null
+  );
 
-  return <h1>{count}</h1>;
+  const handleStop = () => setIsRunning(false);
+  const handleStart = () => setIsRunning(true);
+  const handleReset = () => setCount(0);
+
+  return (
+    <>
+      <h2>{count}</h2>
+      <div style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
+        <button onClick={handleStop}>Stop</button>
+        <button onClick={handleStart}>Start</button>
+        <button onClick={handleReset}>Reset</button>
+      </div>
+    </>
+  );
 };
 export default Timer;
